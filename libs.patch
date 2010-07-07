@@ -1,0 +1,10 @@
+--- qtiocompressor-2.3_1-opensource/src/qtiocompressor.pri~	2010-07-07 08:15:05.000000000 +0300
++++ qtiocompressor-2.3_1-opensource/src/qtiocompressor.pri	2010-07-07 08:15:07.034481036 +0300
+@@ -10,6 +10,7 @@
+ qtiocompressor-uselib:!qtiocompressor-buildlib {
+     LIBS += -L$$QTIOCOMPRESSOR_LIBDIR -l$$QTIOCOMPRESSOR_LIBNAME
+ } else {
++    LIBS += -lz
+     SOURCES += $$PWD/qtiocompressor.cpp
+     HEADERS += $$PWD/qtiocompressor.h
+ }
