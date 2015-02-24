@@ -44,8 +44,6 @@ reduce the memory requirements when working on large data sets.
 Summary:	Development files for QtIOCompressor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	qt4-build
-Requires:	qt4-qmake
 
 %description devel
 This package contains libraries and header files for developing
@@ -67,8 +65,6 @@ reduce the memory requirements when working on large data sets.
 Summary:	Development files for Qt5IOCompressor
 Group:		Development/Libraries
 Requires:	Qt5IOCompressor = %{version}-%{release}
-Requires:	qt5-build
-Requires:	qt5-qmake
 
 %description -n Qt5IOCompressor-devel
 This package contains libraries and header files for developing
