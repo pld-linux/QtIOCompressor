@@ -6,7 +6,7 @@
 Summary:	QtIOCompressor is a QIODevice that compresses data streams
 Name:		QtIOCompressor
 Version:	2.3
-Release:	2
+Release:	3
 License:	GPL v3 or LGPL v2 with exceptions
 Group:		Libraries
 Source0:	http://get.qt.nokia.com/qt/solutions/lgpl/qtiocompressor-%{version}_1-opensource.tar.gz
@@ -25,7 +25,7 @@ BuildRequires:	qt4-qmake
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Gui-devel
 BuildRequires:	qt5-build
-BuildRequires:	qt5-qmake
+BuildRequires:	qt5-qmake >= 5.4
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,8 +83,6 @@ set -- .??* *
 install -d build-qt{4,5}
 cp -al "$@" build-qt4
 cp -al "$@" build-qt5
-
-%{__sed} -i -e 's/QtSolutions/Qt5Solutions/' build-qt5/common.pri
 
 %build
 %if %{with qt4}
