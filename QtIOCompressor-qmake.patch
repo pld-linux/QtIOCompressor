@@ -1,0 +1,29 @@
+--- qtiocompressor-2.3_1-opensource/common.pri.orig	2009-12-16 11:40:11.000000000 +0100
++++ qtiocompressor-2.3_1-opensource/common.pri	2017-06-09 19:03:43.225451026 +0200
+@@ -1,6 +1,10 @@
+ infile(config.pri, SOLUTIONS_LIBRARY, yes): CONFIG += qtiocompressor-uselib
+ TEMPLATE += fakelib
++greaterThan(QT_MAJOR_VERSION, 4) {
++QTIOCOMPRESSOR_LIBNAME = $$qtLibraryTarget(Qt$${QT_MAJOR_VERSION}Solutions_IOCompressor-2.3)
++} else {
+ QTIOCOMPRESSOR_LIBNAME = $$qtLibraryTarget(QtSolutions_IOCompressor-2.3)
++}
+ TEMPLATE -= fakelib
+ QTIOCOMPRESSOR_LIBDIR = $$PWD/lib
+ unix:qtiocompressor-uselib:!qtiocompressor-buildlib:QMAKE_RPATHDIR += $$QTIOCOMPRESSOR_LIBDIR
+--- qtiocompressor-2.3_1-opensource/buildlib/buildlib.pro.orig	2009-12-16 11:40:11.000000000 +0100
++++ qtiocompressor-2.3_1-opensource/buildlib/buildlib.pro	2017-06-09 20:50:56.315377565 +0200
+@@ -5,9 +5,12 @@
+ include(../src/qtiocompressor.pri)
+ TARGET = $$QTIOCOMPRESSOR_LIBNAME
+ DESTDIR = $$QTIOCOMPRESSOR_LIBDIR
++isEmpty(INSTALL_LIBDIR) {
++  INSTALL_LIBDIR = $$QTIOCOMPRESSOR_LIBDIR
++}
+ win32 {
+     DLLDESTDIR = $$[QT_INSTALL_BINS]
+     QMAKE_DISTCLEAN += $$[QT_INSTALL_BINS]\\$${QTIOCOMPRESSOR_LIBNAME}.dll
+ }
+-target.path = $$DESTDIR
++target.path = $$INSTALL_LIBDIR
+ INSTALLS += target
