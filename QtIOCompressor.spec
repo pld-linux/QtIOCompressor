@@ -173,6 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-n Qt5IOCompressor -p /sbin/ldconfig
 %postun	-n Qt5IOCompressor -p /sbin/ldconfig
 
+%if %{with qt4}
 %files
 %defattr(644,root,root,755)
 %doc LGPL_EXCEPTION.txt README.TXT
@@ -186,6 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %{qt4mkspecsdir}/features/qtiocompressor.prf
 %{_includedir}/qt4/QtSolutions/QtIOCompressor
 %{_includedir}/qt4/QtSolutions/qtiocompressor.h
+%endif
 
 %if %{with qt5}
 %files -n Qt5IOCompressor
