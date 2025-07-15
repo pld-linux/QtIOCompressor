@@ -103,8 +103,8 @@ korzystających z biblioteki Qt5IOCompressor.
 
 %prep
 %setup -q -n qtiocompressor-%{version}_1-opensource
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 # skip building examples
 %{__sed} -i -e '/^SUBDIRS+=examples$/d' *.pro
